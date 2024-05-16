@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Libros</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            <a class="navbar-brand"  href="#">BookStore</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Index.html">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="libros.html">Libros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Autores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+                <a href="#" class="btn btn-success btn-sm ml-3">
+                    <i class="fa fa-shopping-cart"></i> Mi Compra
+                    <span class="badge badge-light">2</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!--<section class="jumbotron text-center" style="position: relative;">
+            <img src="img/img_inicio.jpg" style="width: 90%; height: auto; opacity: 0.4s;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(128, 0, 128, 0.5); display: flex; flex-direction: column; justify-content: center; align-items: center;padding: 50px;">
+                <h1 class="display-4">Bienvenidos a nuestra tienda de libros</h1>
+                <p class="lead">Encuentra tus libros favoritos aquí</p>
+            </div>
+        </section>
+        <section class="jumbotron text-center" style="background: url('img/img_inicio.jpg') no-repeat center center; background-size: cover;">
+            <div style="background-color: rgba(128, 0, 128, 0.5)">
+                <h1 class="display-4">Bienvenidos a nuestra tienda de libros</h1>
+                <p class="lead">Encuentra tus libros favoritos aquí</p>
+            </div>
+        </section>-->
+
+        <section class="jumbotron text-center" style="background: url('img/img_inicio.jpg') no-repeat center center; background-size: cover;">
+            <div>
+                <h1 class="display-4">Bienvenidos a nuestra tienda de libros</h1>
+                <p class="lead">Encuentra tus libros favoritos aquí</p>
+            </div>
+        </section>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="img/alas_de_sangre.jpg" alt="Alas de Sangre" class="img-fluid">
+                    <h2>Alas de Sangre</h2>
+                    <h3>Rebecca Yarros</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="img/alas_de_hierro.jpg" alt="Alas de Hierro" class="img-fluid">
+                    <h2>Alas de Hierro</h2>
+                    <h3>Rebecca Yarros</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="img/holly.jpg" alt="Holly" class="img-fluid">
+                    <h2>Hollly</h2>
+                    <h3>Stephen King</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="img/jaque_mate.jpg" alt="Jaque mate del amor" class="img-fluid">
+                    <h2>Jaque mate del amor</h2>
+                    <h3>Ali Hazelwood</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </section>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 BookStore</p>
+        
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
