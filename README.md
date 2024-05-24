@@ -7,7 +7,7 @@ This is a PHP and SQL-based bookstore application using Docker and Git version c
 2. Build and start the containers: **'docker-compose up-d'**.
 3. Acces the aplication: **'https://localhost:9000'**
 
-###Frame Home###
+### Frame Home ###
 ![image](https://github.com/csangar22/BookStore/assets/124258183/1917e3d7-b1ad-451d-8c5e-553be00b99a5)
 
 
