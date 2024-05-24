@@ -1,0 +1,522 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Bookstore</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Bookstore</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="book1.jpg" alt="Book 1" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Book 1</h5>
+                        <p class="card-text">This is a description of Book 1.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <button class="btn btn-primary">Buy Now</button>
+                        <button class="btn btn-secondary">Comment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="book2.jpg" alt="Book 2" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Book 2</h5>
+                        <p class="card-text">This is a description of Book 2.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <button class="btn btn-primary">Buy Now</button>
+                        <button class="btn btn-secondary">Comment</button>
+                    </div>
+                </div>
+            </div>
+            Add more books here 
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tienda Bookstore</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Tienda Bookstore</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Libros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+        </ul>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Carrito</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Iniciar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Registrarse</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h3>Categorías</h3>
+          <ul class="list-unstyled">
+            <li><a href="#">Ficción</a></li>
+            <li><a href="#">No ficción</a></li>
+            <li><a href="#">Infantil</a></li>
+            <li><a href="#">Ciencia ficción</a></li>
+            <li><a href="#">Fantasía</a></li>
+          </ul>
+        </div>
+        <div class="col-md-9">
+          <h1>Nuestros libros más populares</h1>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <img src="libro1.jpg" class="card-img-top" alt="Libro 1">
+                <div class="card-body">
+                  <h5 class="card-title">Libro 1</h5>
+                  <p class="card-text">$20.00</p>
+                  <button class="btn btn-primary" onclick="agregarAlCarrito(1)">Agregar al carrito</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <img src="libro2.jpg" class="card-img-top" alt="Libro 2">
+                
+                
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Libros</title>    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Adamina&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Gilda+Display&family=Glegoo:wght@400;700&family=Gowun+Dodum&family=Graduate&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+            <a class="navbar-brand" href="#">BookStore</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="libros.html">Libros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-secondary btn-search my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <button class="btn btn-register my-2 my-sm-0 ml-2" type="button">Register</button>
+                <button class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</button>
+                <a href="#" class="ml-2"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+        <br>
+        <br>
+        <div class="container book-container">
+          <div class="row">
+              <div class="col-md-3" id="cat_id">
+                  <h3>Categorías</h3>
+                  <ul class="list-unstyled">
+                      <li><a href="#">Ficción</a></li>
+                      <li><a href="#">Histórico</a></li>
+                      <li><a href="#">Infantil</a></li>
+                      <li><a href="#">Fantasía</a></li>
+                      <li><a href="#">Ciencias</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-9">
+                  <div class="row">
+                      <div class="col-md-3 book">
+                          <img src="img/heartless-hunter-kristen-ciccarelli.jpg" alt="Heartless Hunter by Kristen Ciccarelli">
+                          <h3>HEARTLESS HUNTER</h3>
+                          <p>Kristen Ciccarelli</p>
+                          <div class="stars">
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#189;</span>
+                          </div>
+                          <div class="price">18.90 €</div>
+                          <button class="btn">Comprar</button>
+                      </div>
+                      <div class="col-md-3 book">
+                          <img src="img/house-of-flame-and-shadow-sarah-j-maas.jpg" alt="House of Flame and Shadow by Sarah J. Maas">
+                          <h3>HOUSE OF FLAME AND SHADOW</h3>
+                          <p>Sarah J. Maas</p>
+                          <div class="stars">
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#189;</span>
+                          </div>
+                          <div class="price">21.37 €</div>
+                          <button class="btn">Comprar</button>
+                      </div>
+                      <div class="col-md-3 book">
+                          <img src="img/holly.jpg" alt="Holly by Stephen King">
+                          <h3>HOLLY</h3>
+                          <p>Stephen King</p>
+                          <div class="stars">
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9734;</span>
+                          </div>
+                          <div class="price">22.70 €</div>
+                          <button class="btn">Comprar</button>
+                      </div>
+                      <div class="col-md-3 book">
+                          <img src="img/the-demon-of-unrest-erik-larson.jpg" alt="The demon of unrest by Erik Larson">
+                          <h3>THE DEMON OF UNREST</h3>
+                          <p>Erik Larson</p>
+                          <div class="stars">
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9733;</span>
+                              <span>&#9734;</span>
+                          </div>
+                          <div class="price">20.65 €</div>
+                          <button class="btn">Comprar</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        <br>
+        <br>
+        <br>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" id="p">
+                    <h5 id="contacto">CONTACTO:</h5>
+                    <p>Tel: (+34) 657342895</p>
+                    <p>Email: lapaginamagica@gmail.com</p>
+                    <br>
+                    <h5>HORARIO DE APERTURA:</h5>
+                    <p>Lunes a Viernes: 9:00 AM - 7:00 PM</p>
+                    <p>Sábado y Domingo: 10:00 AM - 5:00 PM</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>VISÍTANOS EN:</h5>
+                    <p>1234 Calle de los Libros</p>
+                    <p>Ciudad Literario, CP 56789</p>
+                    <p>País de las Maravillas</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 text-center social-icons">
+                        <br>
+                        <br>
+                        <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new.png" alt="Instagram"></a>
+                        <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/twitter.png" alt="X"></a>
+                        <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.png" alt="Facebook"></a>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p>&copy; 2024 BookStore</p>
+                    </div>
+                </div>
+            </div>      
+        </div>  
+    </footer>
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        window.onscroll = function() {
+            var backToTop = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+      };
+        // Desplazarse al inicio de la página cuando se hace clic en el botón de "back to top"
+      document.getElementById("back-to-top").onclick = function() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      };
+    </script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        .signup-container {
+            background-color: #F8CCFF;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .signup-container h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        .signup-container p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .signup-container .form-control {
+            margin-bottom: 10px;
+            height: 45px;
+            border-radius: 10px;
+        }
+        .signup-container .btn-primary {
+            background-color: black;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            height: 45px;
+        }
+        .signup-container .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .signup-container .divider::before,
+        .signup-container .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+        }
+        .signup-container .divider::before {
+            margin-right: .25em;
+        }
+        .signup-container .divider::after {
+            margin-left: .25em;
+        }
+        .signup-container .google-btn {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            width: 340px;
+            box-shadow: #777;
+        }
+        .signup-container .google-btn img {
+            height: 20px;
+            margin-right: 10px;
+        }
+        .signup-container .terms {
+            font-size: 0.8em;
+            color: #777;
+        }
+        .signup-container .terms a {
+            color: #555;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+          <a class="navbar-brand" href="#">BookStore</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="Index.html">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="libros.html">Libros</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#contacto">Contacto</a>
+                  </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                  <button class="btn btn-outline-secondary btn-search my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+              </form>
+              <button class="btn btn-register my-2 my-sm-0 ml-2" type="button">Register</button>
+              <button class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</button>
+              <a href="#" class="ml-2"><i class="fas fa-shopping-bag"></i></a>
+          </div>
+      </nav>
+  </header>
+  <main>
+    <div class="signup-container">
+      <h2>Create an account</h2>
+      <p>Enter your email to sign up for this app</p>
+      <form>
+          <input type="email" class="form-control" placeholder="email@domain.com" required>
+          <button type="submit" class="btn btn-primary btn-block">Sign up with email</button>
+      </form>
+      <div class="divider">or continue with</div>
+      <button class="google-btn">
+          <img src="img/google.png" alt="Google Logo">
+          Google
+      </button><br>
+      <p class="terms">By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+    </div>
+
+  </main>
+  <!--Footer-->
+  <footer class="footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4" id="p">
+                  <h5 id="contacto">CONTACTO:</h5>
+                  <p>Tel: (+34) 657342895</p>
+                  <p>Email: lapaginamagica@gmail.com</p>
+                  <br>
+                  <h5>HORARIO DE APERTURA:</h5>
+                  <p>Lunes a Viernes: 9:00 AM - 7:00 PM</p>
+                  <p>Sábado y Domingo: 10:00 AM - 5:00 PM</p>
+              </div>
+              <div class="col-md-4">
+                  <h5>VISÍTANOS EN:</h5>
+                  <p>1234 Calle de los Libros</p>
+                  <p>Ciudad Literario, CP 56789</p>
+                  <p>País de las Maravillas</p>
+              </div>
+              <div class="col-md-4">
+                  <div class="col-md-12 text-center social-icons">
+                      <br>
+                      <br>
+                      <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new.png" alt="Instagram"></a>
+                      <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/twitter.png" alt="X"></a>
+                      <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.png" alt="Facebook"></a>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      <p>&copy; 2024 BookStore</p>
+                  </div>
+              </div>
+          </div>      
+      </div>  
+  </footer>
+  <div class="back-to-top" id="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+
+.navbar-custom {
+    background-color: #f8f9fa;
+}
+.navbar-brand {
+    font-size: 1.5rem;
+}
+.navbar-nav .nav-link {
+    color: #6c757d;
+    font-weight: bold;
+}
+.navbar-nav .nav-link:hover {
+    color: #000;
+}
+.form-inline .btn-search {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+.btn-register {
+    background-color: #8e24aa;
+    color: white;
+    border-radius: 0.25rem;
+}
+.btn-login {
+    background-color: #e1bee7;
+    color: black;
+    border-radius: 0.25rem;
+}
+.navbar-nav .nav-item .nav-link {
+    padding-right: 1rem;
+}
+.fa-shopping-bag {
+    color: #000; /* Esto hace que el icono sea negro */
+    font-size: 1.25rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
