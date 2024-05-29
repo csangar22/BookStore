@@ -309,3 +309,112 @@ h5{
     color: #555;
     text-decoration: none;
 }
+
+/* Contenedor book details*/
+.book-containers {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 20px 0;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.book-image {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: 'Graguate', serif;
+}
+
+.book-author {
+    color: #555;
+    margin-top: 5px;
+    font-family: 'Gowun Dodum', serif;
+}
+.book-rating {
+    color: gold;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+.book-description {
+    margin-top: 10px;
+    font-family: 'Actor', sans-serif;
+}
+.book-description p {
+    margin: 0;
+}
+.book-price {
+    font-size: 1.2rem;
+    color: #d9534f;
+    margin-top: 20%;
+    text-align: center;
+    width: 70%;
+    font-family: 'Inter', sans-serif;
+}
+.book-iva {
+    font-size: 1.1rem;
+    color: #797575;
+    margin-top: 10px;
+    text-align: center;
+    width: 70%;
+    font-family: 'Inter', sans-serif;
+}
+.book-details {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.btn-add-cart {
+    background-color: #91009D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: block;
+    width: 70%;
+}
+.btn-add-cart:hover {
+    background-color: #7d1387;
+}
+.btn-review {
+    background-color: #91009D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: block;
+    width: 25%;
+    text-align: center;
+}
+.text-muted {
+    color: #6c757d;
+}
+
+/*Modal*/
+.modal-content{
+    background-color:#f8cff6 ;
+}
+
+/*Estilos del carrito*/
+
+.pedido-container {
+    display: flex;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+
+}

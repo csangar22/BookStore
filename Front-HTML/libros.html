@@ -45,7 +45,7 @@
         <br>
         <br>
         <div class="book-container">
-            <div class="row">
+            <div class="row" id="book-list">
                 <div class="col-md-3" id="cat_id">
                     <!--CATEGORIAS-->
                   <h3>Categorías</h3>
@@ -60,7 +60,7 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-md-3 book">
-                            <a href="book-details.html?title=HEARTLESS HUNTER&author=Kristen Ciccarelli&stars=4.5&price=18.90&image=img/heartless-hunter-kristen-ciccarelli.jpg">
+                            <a href="book-details.html?isbn=9780063058501">
                                 <img src="img/heartless-hunter-kristen-ciccarelli.jpg" alt="Heartless Hunter by Kristen Ciccarelli">
                             </a>
                             <h3>HEARTLESS HUNTER</h3>
@@ -70,13 +70,15 @@
                                 <span>&#9733;</span>
                                 <span>&#9733;</span>
                                 <span>&#9733;</span>
-                                <span>&#189;</span>
                             </div>
                             <div class="price">18.90 €</div>
                             <button class="btn">Comprar</button>
                         </div>
                         <div class="col-md-3 book">
-                            <img src="img/house-of-flame-and-shadow-sarah-j-maas.jpg" alt="House of Flame and Shadow by Sarah J. Maas">
+                            <a href="book-details.html?isbn=9781635574091">
+                                <img src="img/house-of-flame-and-shadow-sarah-j-maas.jpg" alt="House of Flame and Shadow by Sarah J. Maas">
+                            </a>
+
                             <h3>HOUSE OF FLAME AND SHADOW</h3>
                             <p>Sarah J. Maas</p>
                             <div class="stars">
@@ -90,7 +92,10 @@
                             <button class="btn">Comprar</button>
                         </div>
                         <div class="col-md-3 book">
-                            <img src="img/miss-morgans-book-brigade-janet-skeslien-charles.jpg" alt="Holly by Stephen King">
+                            <a href="book-details.html?isbn=9781982181183">
+                                <img src="img/miss-morgans-book-brigade-janet-skeslien-charles.jpg" alt="Miss Morgan's Book Brigade by Janet Skeslien Charles">
+                            </a>
+
                             <h3>Mis Morgan's book brigade </h3>
                             <p>Janet Skeslien Charles</p>
                             <div class="stars">
@@ -104,7 +109,10 @@
                             <button class="btn">Comprar</button>
                         </div>
                         <div class="col-md-3 book" data-title="THE DEMON OF UNREST" data-author="Erik Larson">
-                            <img src="img/the-demon-of-unrest-erik-larson.jpg" alt="The demon of unrest by Erik Larson">
+                            <a href="book-details.html?isbn=9780593239473">
+                                <img src="img/the-demon-of-unrest-erik-larson.jpg" alt="The Demon of Unrest by Erik Larson">
+                            </a>
+
                             <h3>THE DEMON OF UNREST</h3>
                             <p>Erik Larson</p>
                             <div class="stars">
@@ -118,7 +126,10 @@
                             <button class="btn">Comprar</button>
                         </div>
                         <div class="col-md-3 book">
-                            <img src="img/bride-ali-hazelwood.jpg" alt="Bride by Ali Azelwood">
+                            <a href="book-details.html?isbn=9780593336829">
+                                <img src="img/bride-ali-hazelwood.jpg" alt="Bride by Ali Hazelwood">
+                            </a>
+
                             <h3>Bride</h3>
                             <p>Ali Azelwood</p>
                             <div class="stars">
@@ -185,6 +196,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="scripts.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/books.js"></script>
 </body>
 </html>
