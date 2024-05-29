@@ -16,6 +16,14 @@ This is a PHP and SQL-based bookstore application using Docker and Git version c
 ### Frame Register/Log In ### 
 ![image](https://github.com/csangar22/BookStore/assets/124258183/46c20705-5082-49da-85e7-17a1986ed433)
 
+### Frame Book details ###
+<img width="960" alt="image" src="https://github.com/csangar22/BookStore/assets/124258183/de0a4815-77e2-41b7-b66d-7350bd94d8bf">
+
+<img width="960" alt="image" src="https://github.com/csangar22/BookStore/assets/124258183/290d31d2-a186-4e0c-a8ff-360dec642f39">
+
+### Frame Order ###
+<img width="960" alt="image" src="https://github.com/csangar22/BookStore/assets/124258183/22e0779b-9b5b-40cd-ac90-d7f6507bea31">
+
 
 # Aplicación BookStore
 
