@@ -44,5 +44,5 @@ jobs:
       env:        
         NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
-        docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/final:$NEW_VERSION" --push .
-        docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/final:latest" --push .
+        docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:$NEW_VERSION" --push .
+        docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest" --push .
