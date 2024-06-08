@@ -4,8 +4,9 @@ This is a PHP and SQL-based bookstore application using Docker and Git version c
 
 ## Getting Started 
 1. Clone the repository: **'git clone https://github.com/csangar22/bookstore.git'**.
-2. Build and start the containers: **'docker-compose up-d'**.
-3. Acces the aplication: **'https://localhost:80'**
+2. Build and start the containers: **'docker-compose up -d --build'**.
+3. Acces the aplication: **'https://localhost:8080'**
+4. Acces the phpMyAdmin: **'https://localhost:8081'**
 
 ### Frame Home ###
 ![image](https://github.com/csangar22/BookStore/assets/124258183/1917e3d7-b1ad-451d-8c5e-553be00b99a5)
