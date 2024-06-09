@@ -50,10 +50,9 @@ jobs:
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
 
       - name: Build and Push Docker Image
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
         run: |
-          source $GITHUB_ENV
-          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${VERSION}" --push.
-          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest" --push.
-
-          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${{ env.VERSION }}" --push .
+          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${VERSION}" --push .
           docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest" --push .
+        
