@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql
 
 # Copia la configuración personalizada de Apache
-COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
+COPY bookHub/apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Expone el puerto 80
 EXPOSE 80
