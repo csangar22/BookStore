@@ -48,6 +48,9 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+      - name: List files in bookHub directory
+        run: ls -la bookHub
+
       - name: Build and Push Docker Image
         env:
           MAJOR: ${{ steps.version.outputs.major }}
