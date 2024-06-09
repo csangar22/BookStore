@@ -32,7 +32,7 @@ jobs:
           tag_prefix: "v"
           short_tags: true
           bump_each_commit: false
-          format: "${{version}}"
+          format: "${{ steps.version.outputs.version }}"
 
       - name: Debug Semantic Version Outputs
         run: |
