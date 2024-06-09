@@ -26,13 +26,9 @@ jobs:
         id: version
         uses: PaulHatch/semantic-version@v4.0.3
         with:
-          major_pattern: "^major:"
-          minor_pattern: "^feat:"
-          patch_pattern: "^fix:"
-          skip_commit_pattern: "^skip-release:"
-          branch_pattern: "main"
-          change_path: "."
-          format: "${{version}}"
+          major_pattern: "major:"
+          minor_pattern: "feat:"
+          format: "${{ steps.version.outputs.version }}"
 
       - name: Debug Semantic Version Outputs
         run: |
