@@ -44,10 +44,8 @@ jobs:
         run: |
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
       - name: Build Docker Image
-        env:
-          NEW_VERSION: ${{ steps.version.outputs.version }}
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${NEW_VERSION}".
+          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${steps.version.outputs.version}".
           docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest".
-          docker push "cryss/bookhub:${NEW_VERSION}"
-          docker push "cryss/bookhub:latest
+          docker push "cryss/bookhub:${steps.version.outputs.version}"
+          docker push "cryss/bookhub:latest"
