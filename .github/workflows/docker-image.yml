@@ -31,7 +31,8 @@ jobs:
           tag_prefix: "v"
           short_tags: true
           bump_each_commit: false
-          format: "${{ steps.version.outputs.version }}"
+          branch: HEAD
+          format: "$major.$minor.$patch"
 
       - name: Debug Semantic Version Outputs
         run: |
