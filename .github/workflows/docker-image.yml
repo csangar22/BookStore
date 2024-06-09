@@ -49,7 +49,11 @@ jobs:
         run: |
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
       - name: Build and Push Docker Image
+        env:
+          MAJOR: ${{ steps.version.outputs.major }}
+          MINOR: ${{ steps.version.outputs.minor }}
+          PATCH: ${{ steps.version.outputs.patch }}
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${{ steps.version.outputs.version }}" --push .
+          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${MAJOR}.${MINOR}.${PATCH}" --push .
           docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest" --push .
-        
+
