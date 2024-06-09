@@ -35,11 +35,12 @@ $logged_in = isset($_SESSION['nombre']);
             <input type="text" id="search-input" class="form-control" placeholder="Buscar libros">
         </div>
         <?php if(isset($_SESSION['nombre'])): ?>
-            <span class="navbar-text">Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
+            <span class="navbar-text"> <?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
             <a href="logout.php" class="btn btn-logout my-2 my-sm-0 ml-2" type="button">Log Out</a>
+            </form>
         <?php else: ?>
-            <a href="register.html" class="btn btn-register my-2 my-sm-0 ml-2" type="button">Register</a>
-            <a href="login.html" class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</a>
+            <a href="registro.php" class="btn btn-register my-2 my-sm-0 ml-2" type="button">Register</a>
+            <a href="iniciar.php" class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</a>
         <?php endif; ?>
         <a href="php/view_cart.php" class="ml-2"><i class="fas fa-shopping-bag"></i></a>
     </div>

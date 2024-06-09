@@ -19,6 +19,14 @@ include 'navbar.php';
                 </ul>
             </div>
             <div class="col-md-9">
+                <?php
+                    if(isset($_GET['message'])) {
+                        $message = urldecode($_GET['message']);
+                        echo '<div class="alert alert-success" role="alert">' . $message . '</div>';
+                    } elseif (!empty($message)) {
+                        echo '<div class="alert alert-danger" role="alert">' . $message . '</div>';
+                    }
+                ?>
                 <div class="row">
                     <div class="col-md-3 book">
                         <a href="book-details.php?isbn=9780063058501">

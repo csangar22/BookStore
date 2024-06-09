@@ -1,6 +1,8 @@
 <?php
-require 'db.php';
 session_start();
+require 'db.php';
+
+$message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST["name"];
@@ -18,22 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Insertar el usuario en la base de datos
     try {
-        $stmt = $pdo->prepare("INSERT INTO usuario (Nombre, Apellido ,Email, Password) VALUES (:name, :lastname ,:email, :password)");
+        $stmt = $pdo->prepare("INSERT INTO usuario (Nombre, Apellido, Email, Password) VALUES (:name, :lastname, :email, :password)");
         $stmt->execute(['name' => $name, 'lastname' => $lastname, 'email' => $email, 'password' => $hashed_password]);
-        echo 'Usuario registrado exitosamente.';
 
         // Iniciar sesión
         $_SESSION['email'] = $email;
-        header('Location: index.php');
+
+        $message = 'Usuario creado, por favor inicie sesión.';
+        header('Location: registro.php?message=' . urlencode($message));
         exit();
+
     } catch (PDOException $e) {
         if ($e->getCode() == 23000) {
-            echo 'Este email ya está registrado.';
+            $message = 'Este email ya está registrado.';
         } else {
-            echo 'Error: ' . $e->getMessage();
+            $message = 'Error: ' . $e->getMessage();
         }
     }
 }
 ?>
-
-

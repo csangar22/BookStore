@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd
+    && docker-php-ext-install gd \
+    && docker-php-ext-install pdo pdo_mysql
 
 # Copia la configuración personalizada de Apache
 COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf

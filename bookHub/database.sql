@@ -1,6 +1,5 @@
-CREATE DATABASE bookhub;
-
 USE bookhub;
+
 -- Creación de la tabla Libro
 CREATE TABLE IF NOT EXISTS libro (
     ISBN VARCHAR(13) PRIMARY KEY,
@@ -29,7 +28,7 @@ CREATE TABLE IF NOT EXISTS pedido (
     Direccion VARCHAR(50) NOT NULL,
     Ciudad VARCHAR(255) NOT NULL,
     Codigo_postal VARCHAR(20) NOT NULL,
-    Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Total DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (ID_usuario) REFERENCES usuario(ID_usuario)
 );
@@ -37,20 +36,11 @@ CREATE TABLE IF NOT EXISTS pedido (
 -- Creación de la tabla Resena
 CREATE TABLE IF NOT EXISTS resena (
     ID_resena INT PRIMARY KEY AUTO_INCREMENT,
-    Contenido TEXT NOT NULL,
-    Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ID_libro VARCHAR(13) NOT NULL,
     ID_usuario INT NOT NULL,
-    FOREIGN KEY (ID_libro) REFERENCES libro(ISBN),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID_usuario)
-);
-
--- Creación de la tabla Calificacion
-CREATE TABLE IF NOT EXISTS calificacion (
-    ID_calificacion INT PRIMARY KEY AUTO_INCREMENT,
-    Puntuacion INT NOT NULL CHECK (Puntuacion >= 1 AND Puntuacion <= 5),
-    ID_libro VARCHAR(13) NOT NULL,
-    ID_usuario INT NOT NULL,
+    Calificacion INT NOT NULL,
+    Contenido TEXT,
+    Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (ID_libro) REFERENCES libro(ISBN),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(ID_usuario)
 );
@@ -72,7 +62,15 @@ CREATE TABLE IF NOT EXISTS detalle_pedido (
 CREATE INDEX idx_pedido_id_usuario ON pedido(ID_usuario);
 CREATE INDEX idx_resena_id_libro ON resena(ID_libro);
 CREATE INDEX idx_resena_id_usuario ON resena(ID_usuario);
-CREATE INDEX idx_calificacion_id_libro ON calificacion(ID_libro);
-CREATE INDEX idx_calificacion_id_usuario ON calificacion(ID_usuario);
 CREATE INDEX idx_detalle_pedido_id_pedido ON detalle_pedido(ID_pedido);
 CREATE INDEX idx_detalle_pedido_isbn ON detalle_pedido(ISBN);
+
+INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Genero`, `Precio`, `Stock`) VALUES ('9780063058501', 'Heartless Hunter', 'Kristen Ciccarelli', 'ficcion', '18.90', '5');
+
+INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Genero`, `Precio`, `Stock`) VALUES ('9780593239473', 'The demon of unrest', 'Erik Larson', 'No ficcion', '20.65', '10');
+
+INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Genero`, `Precio`, `Stock`) VALUES ('9780593336829', 'Bride', 'Ali Hazelwood', 'Romantica, Fantasia', '14.00', '5');
+
+INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Genero`, `Precio`, `Stock`) VALUES ('9781635574091', 'House of flame and shadow', 'Sarah J. Maas', 'fantasia', '21.37', '6');
+
+ INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Genero`, `Precio`, `Stock`) VALUES ('9781982181183', 'Miss Morgans Book Brigade', 'Janet Skeslien Charles', 'novela historica', '22.70', '6')

@@ -2,6 +2,8 @@
 require 'db.php';
 session_start();
 
+$message = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -12,19 +14,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Verificar las credenciales del usuario
-    $stmt = $pdo->prepare("SELECT * FROM usuario WHERE Email = :email");
-    $stmt->execute(['email' => $email]);
-    $user = $stmt->fetch();
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM usuario WHERE Email = :email");
+        $stmt->execute(['email' => $email]);
+        $user = $stmt->fetch();
 
-    if ($user && password_verify($password, $user['Password'])) {
-        // Iniciar sesión
-        $_SESSION['email'] = $email;
-        $_SESSION['nombre'] = $user['Nombre'];
-        header('Location: index.php');
-        exit();
-    } else {
-        echo 'Credenciales incorrectas.';
+        if ($user && password_verify($password, $user['Password'])) {
+            // Iniciar sesión
+            $_SESSION['user_id'] = $user['ID_usuario']; // Guardar el ID del usuario en la sesión
+            $_SESSION['email'] = $email;
+            $_SESSION['nombre'] = $user['Nombre'];
+            header('Location: Index.php');
+            exit();
+        } else {
+            $message = 'Credenciales incorrectas.';
+        }
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
     }
 }
 ?>
-
