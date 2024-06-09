@@ -51,5 +51,9 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
+          source $GITHUB_ENV
+          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${VERSION}" --push.
+          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest" --push.
+
           docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${{ env.VERSION }}" --push .
           docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest" --push .
