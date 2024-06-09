@@ -28,7 +28,15 @@ jobs:
       with:
         major_pattern: "major:"
         minor_pattern: "feat:"
-        format: "${{major}}.${{minor}}.${{patch}}-prerelease${{increment}}"
+        format: "${{version.major}}.${{version.minor}}.${{version.patch}}-prerelease${{version.increment}}"
+
+    - name: Debug Semantic Version Outputs
+      run: |
+        echo "Major: ${{ steps.version.outputs.major }}"
+        echo "Minor: ${{ steps.version.outputs.minor }}"
+        echo "Patch: ${{ steps.version.outputs.patch }}"
+        echo "Increment: ${{ steps.version.outputs.increment }}"
+        echo "Version: ${{ steps.version.outputs.version }}"
 
     - name: Docker login
       env:
