@@ -37,15 +37,17 @@ jobs:
       - name: Debug Semantic Version Outputs
         run: |
           echo "Version: ${{ steps.version.outputs.version }}"
+
       - name: Docker login
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-      - name: Build Docker Image
+
+      - name: Build and Push Docker Image
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${steps.version.outputs.version}".
-          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest".
-          docker push "cryss/bookhub:${steps.version.outputs.version}"
-          docker push "cryss/bookhub:latest"
+          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:${VERSION}" --push .
+          docker buildx build --platform linux/amd64,linux/arm64 -t "cryss/bookhub:latest" --push .
