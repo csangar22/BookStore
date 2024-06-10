@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y \
 
 # Copia la configuración personalizada de Apache
 COPY bookHub/apache-config.conf /etc/apache2/sites-available/000-default.conf
+# COpia la configuracion personalidada de Apache, este comando debe desmarcar como comentario para hacer el docker-compose up --build
+#COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Expone el puerto 80
 EXPOSE 80
