@@ -57,7 +57,7 @@ session_start();
             <a href="logout.php" class="btn btn-logout my-2 my-sm-0 ml-2" type="button">Log Out</a>
         <?php else: ?>
             <a href="../register.php" class="btn btn-register my-2 my-sm-0 ml-2" type="button">Register</a>
-            <a href="../login.php" class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</a>
+            <a href="../iniciar.php" class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</a>
         <?php endif; ?>
         <a href="view_cart.php" class="ml-2"><i class="fas fa-shopping-bag"></i></a>
     </div>

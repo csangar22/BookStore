@@ -1,3 +1,16 @@
+<?php
+session_start();
+$logged_in = isset($_SESSION['nombre']);
+$message = '';
+$message_type = '';
+
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $message_type = isset($_SESSION['message_type']) ? $_SESSION['message_type'] : 'alert-danger'; // Default to danger if type is not set
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']); // Eliminar el tipo de mensaje de la sesión después de mostrarlo
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,45 +23,44 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Adamina&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Glegoo:wght@400;700&family=Gowun+Dodum&family=Graduate&display=swap" rel="stylesheet">
-
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-            <a class="navbar-brand" href="Index.php">BookHub</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Index.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="libros.php">Libros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-secondary btn-search my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-                <a href="registro.php" class="btn btn-register my-2 my-sm-0 ml-2" type="button">Register</button>
-                <a href="iniciar.php" class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</button>
-                <a href="#" class="ml-2"><i class="fas fa-shopping-bag"></i></a>
-            </div>
-        </nav>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <a class="navbar-brand" href="Index.php">BookHub</a>
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Index.php">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="libros.php">Libros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+            </ul>
+            <!-- Formulario de búsqueda -->
+            <form class="form-inline my-2 my-lg-0" method="GET" action="libros.php">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar libros" aria-label="Search" name="search" id="search-input">
+            </form>
+            <?php if ($logged_in): ?>
+                <span class="navbar-text"><?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
+                <a href="logout.php" class="btn btn-logout my-2 my-sm-0 ml-2" type="button">Log Out</a>
+            <?php else: ?>
+                <a href="registro.php" class="btn btn-register my-2 my-sm-0 ml-2" type="button">Register</a>
+                <a href="iniciar.php" class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</a>
+            <?php endif; ?>
+            <a href="php/view_cart.php" class="ml-2"><i class="fas fa-shopping-bag"></i></a>
+        </div>
+    </nav>
+
     </header>
     <main>
         <div class="signup-container">
         <?php
-            if(isset($_GET['message'])) {
-                $message = urldecode($_GET['message']);
-                echo '<div class="alert alert-success" role="alert">' . $message . '</div>';
-            } elseif (!empty($message)) {
-                echo '<div class="alert alert-danger" role="alert">' . $message . '</div>';
+            if (!empty($message)) {
+                echo '<div class="alert ' . $message_type . '" role="alert">' . $message . '</div>';
             }
         ?>
             <h2>Create an account</h2>
@@ -116,10 +128,3 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

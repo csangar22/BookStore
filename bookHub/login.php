@@ -2,15 +2,15 @@
 require 'db.php';
 session_start();
 
-$message = '';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     // Validar los datos
     if (empty($email) || empty($password)) {
-        die('Por favor, completa todos los campos.');
+        $_SESSION['message'] = 'Por favor, completa todos los campos.';
+        header('Location: iniciar.php');
+        exit();
     }
 
     // Verificar las credenciales del usuario
@@ -27,10 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: Index.php');
             exit();
         } else {
-            $message = 'Credenciales incorrectas.';
+            $_SESSION['message'] = 'Credenciales incorrectas.';
+            header('Location: iniciar.php');
+            exit();
         }
     } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+        $_SESSION['message'] = "Error: " . $e->getMessage();
+        header('Location: iniciar.php');
+        exit();
     }
 }
 ?>

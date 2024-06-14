@@ -1,5 +1,49 @@
 <?php
 session_start();
+require '../db.php';  // Archivo de conexión a la base de datos
+$logged_in = isset($_SESSION['nombre']);
+// Verifica si el usuario está logueado
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['message'] = [
+        'type' => 'danger',
+        'text' => 'Debes iniciar sesión para ver tu carrito.'
+    ];
+    header("Location: ../iniciar.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Recuperar el ID del carrito
+$stmt = $pdo->prepare("SELECT ID_carrito FROM carrito WHERE ID_usuario = :user_id");
+$stmt->execute(['user_id' => $user_id]);
+$carrito = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$libros = [];
+$total = 0;
+
+if ($carrito) {
+    $carrito_id = $carrito['ID_carrito'];
+
+    // Recuperar los detalles del carrito
+    $stmt = $pdo->prepare("SELECT dc.ISBN, dc.Titulo, dc.Autor, dc.Precio, dc.Cantidad, l.Image 
+                        FROM detalle_carrito dc 
+                        JOIN libro l ON dc.ISBN = l.ISBN WHERE dc.ID_carrito = :carrito_id");
+    $stmt->execute(['carrito_id' => $carrito_id]);
+    $libros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($libros as $libro) {
+        $total += $libro['Precio'] * $libro['Cantidad'];
+    }
+}
+// Obtiene la cantidad de artículos en el carrito
+function obtenerCantidadCarrito() {
+    if (isset($_SESSION['cart'])) {
+        return count($_SESSION['cart']);
+    } else {
+        return 0;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,6 +63,73 @@ session_start();
             color: white;
             border-radius: 15px;
         }
+        .pedido-container{
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            width: 50%;
+        }
+        .book-container {
+            gap: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%; 
+            
+        }
+
+        .book {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .book-image {
+            margin-right: 10px;
+        }
+
+        .book-details {
+            flex: 1;
+        }
+
+        .book-details h3, .book-details p {
+            margin: 0;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn {
+            margin-top: 10px;
+        }
+        #delete{
+            width: 100%;
+        }
+        .btn-logout{
+            background-color: #dc70ed;
+            border-radius: 10px;
+            color: white;
+        }
+        .navbar-text{
+            font-weight: bold;
+            margin-right: 20px;
+
+        }
+        .search-bar {
+            margin-right: 25px; 
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -40,62 +151,66 @@ session_start();
             <div class="search-bar">
                 <input type="text" id="search-input" class="form-control" placeholder="Buscar libros">
             </div>
-            <?php if(isset($_SESSION['nombre'])): ?>
-                <span class="navbar-text"> <?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
+            <?php if ($logged_in): ?>
+            <span class="navbar-text"><?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
                 <a href="../logout.php" class="btn btn-logout my-2 my-sm-0 ml-2" type="button">Log Out</a>
             <?php else: ?>
                 <a href="../registro.php" class="btn btn-register my-2 my-sm-0 ml-2" type="button">Register</a>
                 <a href="../iniciar.php" class="btn btn-login my-2 my-sm-0 ml-2" type="button">Log In</a>
             <?php endif; ?>
-            <a href="php/view_cart.php" class="ml-2"><i class="fas fa-shopping-bag"></i></a>
+            <a href="view_cart.php" class="ml-2">
+            <i class="fas fa-shopping-bag"></i>
+            <?php
+            $cantidadCarrito = obtenerCantidadCarrito();
+            if ($cantidadCarrito > 0) {
+                echo '<span class="badge badge-danger">' . $cantidadCarrito . '</span>';
+            }
+            ?>
+        </a>
         </div>
     </nav>
     <main>
-        <div class="container mt-5 pedido-container">
+        <div class="pedido-container mt-5">
+            <div id="message" class="alert d-none"></div>
             <div class="row">
                 <div class="col-md-6">
                     <h2>Tu Pedido</h2>
-                    <form action="procesar_pedido.php" method="post">
-                        <div id="carrito">
-                            <?php
-                            $libros = [
-                                "9780063058501" => ['titulo' => 'Heartless Hunter', 'autor' => 'Kristen Ciccarelli', 'precio' => 18.90, 'imagen' => '../img/heartless-hunter-kristen-ciccarelli.jpg'],
-                                "9781635574091" => ['titulo' => 'House of Flame and Shadow', 'autor' => 'Sarah J. Maas', 'precio' => 21.37, 'imagen' => '../img/house-of-flame-and-shadow-sarah-j-maas.jpg'],
-                                "9781982181183" => ['titulo' => 'Miss Morgan\'s Book Brigade', 'autor' => 'Janet Skeslien Charles', 'precio' => 22.70, 'imagen' => '../img/miss-morgans-book-brigade-janet-skeslien-charles.jpg'],
-                                "9780593239473" => ['titulo' => 'The Demon of Unrest', 'autor' => 'Erik Larson', 'precio' => 20.65, 'imagen' => '../img/the-demon-of-unrest-erik-larson.jpg'],
-                                "9780593336829" => ['titulo' => 'Bride', 'autor' => 'Ali Hazelwood', 'precio' => 14.00, 'imagen' => '../img/bride-ali-hazelwood.jpg'],
-                            ];
-
-                            $total = 0;
-
-                            if (!empty($_SESSION['cart'])) {
-                                foreach ($_SESSION['cart'] as $isbn) {
-                                    $libro = $libros[$isbn];
-                                    echo "<div class='book-container mb-3 p-3 border'>
-                                            <div class='book d-flex align-items-center'>
-                                                <div class='book-image mr-3'>
-                                                    <img src='{$libro['imagen']}' alt='{$libro['titulo']}' class='img-fluid' style='max-width: 100px;'>
-                                                </div>
-                                                <div class='book-details'>
-                                                    <h3>{$libro['titulo']}</h3>
-                                                    <p>{$libro['autor']}</p>
-                                                    <p class='price'>{$libro['precio']} €</p>
-                                                    <form action='remove_from_cart.php' method='post'>
-                                                        <input type='hidden' name='isbn' value='$isbn'>
-                                                        <button type='submit' class='btn btn-danger'>Eliminar del Carrito</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>";
-                                    $total += $libro['precio'];
-                                }
-                            } else {
-                                echo "<p>El carrito está vacío</p>";
-                            }
-                            ?>
+                    <?php if(isset($_SESSION['message'])): ?>
+                        <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>" role="alert">
+                            <?php echo $_SESSION['message']['text']; ?>
                         </div>
-                        <p>Total: <?php echo number_format($total, 2); ?> €</p>
-                    </form>
+                        <?php unset($_SESSION['message']); ?>
+                    <?php endif; ?>
+
+                    <div id="carrito">
+                        <?php
+                        if (!empty($libros)) {
+                            foreach ($libros as $libro) {
+                                echo "<div class='book-container mb-3 p-3 border'>
+                                        <div class='book d-flex align-items-center'>
+                                            <div class='book-image mr-3'>
+                                
+                                                <img src='../{$libro['Image']}' alt='{$libro['Titulo']}' class='img-fluid' style='max-width: 120px;'>
+                                            </div>
+                                            <div class='book-details'>
+                                                <h3>{$libro['Titulo']}</h3>
+                                                <p>{$libro['Autor']}</p>
+                                                <p class='price'>{$libro['Precio']} €</p>
+                                                <p>Cantidad: {$libro['Cantidad']}</p>
+                                                <form action='remove_from_cart.php' method='post'>
+                                                    <input type='hidden' name='isbn' value='{$libro['ISBN']}'>
+                                                    <button type='submit' class='btn btn-danger' id='delete'>Eliminar del Carrito</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>";
+                            }
+                        } else {
+                            echo "<p>El carrito está vacío</p>";
+                        }
+                        ?>
+                    </div>
+                    <p>Total: <?php echo number_format($total, 2); ?> €</p>
                 </div>
                 <div class="col-md-6">
                     <h2>Información del Cliente</h2>
@@ -165,8 +280,24 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/books.js"></script>
     <script src="../js/scripts.js"></script>
+    <script>
+    function removeFromCart(isbn) {
+        $.ajax({
+            type: 'POST',
+            url: 'remove_from_cart.php',
+            data: { isbn: isbn },
+            success: function(response) {
+                $('#message').removeClass('d-none alert-danger alert-success');
+                if (response === 'success') {
+                    $('#message').addClass('alert-success').text('El libro ha sido eliminado del carrito.');
+                    $('#book-' + isbn).remove();
+                } else {
+                    $('#message').addClass('alert-danger').text(response);
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>

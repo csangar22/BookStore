@@ -26,16 +26,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Iniciar sesión
         $_SESSION['email'] = $email;
 
-        $message = 'Usuario creado, por favor inicie sesión.';
-        header('Location: registro.php?message=' . urlencode($message));
+        $_SESSION['message'] = 'Usuario creado, por favor inicie sesión.';
+        $_SESSION['message_type'] = 'alert-success'; // Mensaje de éxito
+        header('Location: registro.php');
         exit();
 
     } catch (PDOException $e) {
         if ($e->getCode() == 23000) {
-            $message = 'Este email ya está registrado.';
+            $_SESSION['message'] = 'Este email ya está registrado.';
+            $_SESSION['message_type'] = 'alert-danger'; // Mensaje de error
         } else {
-            $message = 'Error: ' . $e->getMessage();
+            $_SESSION['message'] = 'Error: ' . $e->getMessage();
+            $_SESSION['message_type'] = 'alert-danger'; // Mensaje de error
         }
+        header('Location: registro.php');
+        exit();
     }
 }
-?>

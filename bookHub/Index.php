@@ -1,5 +1,6 @@
 <?php
 include 'navbar.php';
+include 'db.php';
 ?>
     <main>
         <!--Imagen de inicio y titulo-->
@@ -28,6 +29,16 @@ include 'navbar.php';
         <br>
         <br>
         <br>
+        <?php
+            $search = isset($_GET['search']) ? $_GET['search'] : '';
+            if ($search) {
+                $stmt = $pdo->prepare('SELECT * FROM libro WHERE Titulo LIKE ? OR Autor LIKE ?');
+                $stmt->execute(["%$search%", "%$search%"]);
+            } else {
+                $stmt = $pdo->query('SELECT * FROM libro');
+            }
+            $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ?>
         <!--Contenedor de libros-->
         <div class="book-container">
             <div class="book" data-title="THE DEMON OF UNREST" data-author="Erik Larson">

@@ -1,12 +1,13 @@
 <?php
 include 'navbar.php';
+include 'db.php';
 ?>
 <main>
     <!--CONTENEDOR DE LIBROS-->
     <br>
     <br>
     <div class="book-container">
-        <div class="row" id="book-list">
+        <div class="row">
             <div class="col-md-3" id="cat_id">
                 <!--CATEGORIAS-->
                 <h3>Categorías</h3>
@@ -20,109 +21,73 @@ include 'navbar.php';
             </div>
             <div class="col-md-9">
                 <?php
-                    if(isset($_GET['message'])) {
-                        $message = urldecode($_GET['message']);
-                        echo '<div class="alert alert-success" role="alert">' . $message . '</div>';
-                    } elseif (!empty($message)) {
-                        echo '<div class="alert alert-danger" role="alert">' . $message . '</div>';
+                if (isset($_SESSION['message'])) {
+                    echo '<div class="alert alert-' . $_SESSION['message']['type'] . '" role="alert">' . $_SESSION['message']['text'] . '</div>';
+                    unset($_SESSION['message']);
+                }
+
+                $search = isset($_GET['search']) ? $_GET['search'] : '';
+                if ($search) {
+                    $stmt = $pdo->prepare('SELECT * FROM libro WHERE Titulo LIKE ? OR Autor LIKE ?');
+                    $stmt->execute(["%$search%", "%$search%"]);
+                } else {
+                    $stmt = $pdo->query('SELECT * FROM libro');
+                }
+                $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                function getStarsHTML($stars) {
+                    $fullStars = floor($stars);                       // Número entero de estrellas llenas
+                    $decimalPart = $stars - $fullStars;               // Parte decimal para determinar fracción de estrella
+                    $halfStar = $decimalPart >= 0.25 && $decimalPart < 0.75 ? 1 : 0; // Determina si hay media estrella
+                    $emptyStars = 5 - $fullStars - $halfStar;         // Número de estrellas vacías necesarias
+                
+                    // Estilo CSS para las estrellas (amarillo)
+                    $starStyle = 'style="color: gold;"';
+                
+                    $starsHTML = '<div class="stars" ' . $starStyle . '>';  // Inicia contenedor de estrellas
+                    $starsHTML .= str_repeat('&#9733;', $fullStars);   // Estrellas llenas (&#9733; es ★)
+                
+                    // Agrega la media estrella visualmente
+                    if ($halfStar) {
+                        $starsHTML .= '<span ' . $starStyle . '>&#9733;</span>';  // Media estrella como una estrella llena
+                        $starsHTML .= '<span ' . $starStyle . '>&#9734;</span>';  // La otra mitad como una estrella vacía
                     }
+                
+                    $starsHTML .= str_repeat('&#9734;', $emptyStars); // Estrellas vacías (&#9734; es ☆)
+                    $starsHTML .= '</div>';                          // Cierra contenedor de estrellas
+                
+                    return $starsHTML;                               // Devuelve el código HTML completo de estrellas
+                }
+                
+                
+                // Código para imprimir libros
+                echo '<div class="row">';
+                foreach ($books as $book) {
+                    echo '<div class="col-md-3 book">';
+                    echo '<a href="book-details.php?isbn=' . $book['ISBN'] . '">';
+                    echo '<img src="' . $book['Image'] . '" alt="' . $book['Titulo'] . '" class="img-fluid">';
+                    echo '</a>';
+                    echo '<h3>' . $book['Titulo'] . '</h3>';
+                    echo '<p>' . $book['Autor'] . '</p>';
+                
+                    // Llamar a la función getStarsHTML para imprimir las estrellas
+                    echo getStarsHTML($book['Estrellas']);
+                    
+                    echo '<div class="price">' . $book['Precio'] . ' €</div>';
+                    
+                    // Verificar el stock para deshabilitar el botón si es necesario
+                    if ($book['Stock'] <= 0) {
+                        echo '<button type="button" class="btn add-to-cart" disabled>Agotado</button>';
+                    } else {
+                        echo '<form action="php/add_to_cart.php" method="post">';
+                        echo '<input type="hidden" name="isbn" value="' . $book['ISBN'] . '">';
+                        echo '<button type="submit" class="btn add-to-cart">Comprar</button>';
+                        echo '</form>';
+                    }
+                    
+                    echo '</div>'; // Cierra div.book
+                }
+                echo '</div>'; // Cierra div.row
                 ?>
-                <div class="row">
-                    <div class="col-md-3 book">
-                        <a href="book-details.php?isbn=9780063058501">
-                            <img src="img/heartless-hunter-kristen-ciccarelli.jpg" alt="Heartless Hunter by Kristen Ciccarelli">
-                        </a>
-                        <h3>HEARTLESS HUNTER</h3>
-                        <p>Kristen Ciccarelli</p>
-                        <div class="stars">
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                        </div>
-                        <div class="price">18.90 €</div>
-                        <form action="php/add_to_cart.php" method="post">
-                            <input type="hidden" name="isbn" value="9780063058501">
-                            <button type="submit" class="btn add-to-cart">Comprar</button>
-                        </form>
-                    </div>
-                    <div class="col-md-3 book">
-                        <a href="book-details.php?isbn=9781635574091">
-                            <img src="img/house-of-flame-and-shadow-sarah-j-maas.jpg" alt="House of Flame and Shadow by Sarah J. Maas">
-                        </a>
-                        <h3>HOUSE OF FLAME AND SHADOW</h3>
-                        <p>Sarah J. Maas</p>
-                        <div class="stars">
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#189;</span>
-                        </div>
-                        <div class="price">21.37 €</div>
-                        <form action="php/add_to_cart.php" method="post">
-                            <input type="hidden" name="isbn" value="9781635574091">
-                            <button type="submit" class="btn add-to-cart">Comprar</button>
-                        </form>
-                    </div>
-                    <div class="col-md-3 book">
-                        <a href="book-details.php?isbn=9781982181183">
-                            <img src="img/miss-morgans-book-brigade-janet-skeslien-charles.jpg" alt="Miss Morgan's Book Brigade by Janet Skeslien Charles">
-                        </a>
-                        <h3>Miss Morgan's Book Brigade</h3>
-                        <p>Janet Skeslien Charles</p>
-                        <div class="stars">
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9734;</span>
-                        </div>
-                        <div class="price">22.70 €</div>
-                        <form action="php/add_to_cart.php" method="post">
-                            <input type="hidden" name="isbn" value="9781982181183">
-                            <button type="submit" class="btn add-to-cart">Comprar</button>
-                        </form>
-                    </div>
-                    <div class="col-md-3 book">
-                        <a href="book-details.php?isbn=9780593239473">
-                            <img src="img/the-demon-of-unrest-erik-larson.jpg" alt="The Demon of Unrest by Erik Larson">
-                        </a>
-                        <h3>THE DEMON OF UNREST</h3>
-                        <p>Erik Larson</p>
-                        <div class="stars">
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9734;</span>
-                        </div>
-                        <div class="price">20.65 €</div>
-                        <form action="php/add_to_cart.php" method="post">
-                            <input type="hidden" name="isbn" value="9780593239473">
-                            <button type="submit" class="btn add-to-cart">Comprar</button>
-                        </form>
-                    </div>
-                    <div class="col-md-3 book">
-                        <a href="book-details.php?isbn=9780593336829">
-                            <img src="img/bride-ali-hazelwood.jpg" alt="Bride by Ali Hazelwood">
-                        </a>
-                        <h3>Bride</h3>
-                        <p>Ali Hazelwood</p>
-                        <div class="stars">
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9733;</span>
-                            <span>&#9734;</span>
-                        </div>
-                        <div class="price">14.00 €</div>
-                        <form action="php/add_to_cart.php" method="post">
-                            <input type="hidden" name="isbn" value="9780593336829">
-                            <button type="submit" class="btn add-to-cart">Comprar</button>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

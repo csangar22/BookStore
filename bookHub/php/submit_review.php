@@ -2,7 +2,7 @@
 require '../db.php';
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
     $isbn = $_POST['isbn'];
     $userId = $_POST['user_id'];
     $rating = $_POST['rating'];
