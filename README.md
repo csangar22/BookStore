@@ -9,13 +9,14 @@ This is a PHP and SQL-based bookstore application using Docker and Git version c
 4. Acces the phpMyAdmin: **'https://localhost:8081'**
 
 ### Home Page ###
-![image](https://github.com/csangar22/BookStore/assets/124258183/1917e3d7-b1ad-451d-8c5e-553be00b99a5)
+<img width="926" alt="image" src="https://github.com/csangar22/BookStore/assets/124258183/a0d434b0-7ca8-401c-92f6-11d7a11494ae">
+
 
 ### Books  Page ###
-![image](https://github.com/csangar22/BookStore/assets/124258183/f3a742d7-fd71-4a07-8309-6babeb7f6602)
+![image](https://github.com/csangar22/BookStore/assets/124258183/39629cbc-9f3d-48e5-b725-d6ac34f398b8)
 
 ### Registration/Login Page ### 
-![image](https://github.com/csangar22/BookStore/assets/124258183/46c20705-5082-49da-85e7-17a1986ed433)
+![image](https://github.com/csangar22/BookStore/assets/124258183/1c0ec26b-eef8-40c3-8b17-1064ff1690d8)
 
 ### Book Detail Page ###
 <img width="960" alt="image" src="https://github.com/csangar22/BookStore/assets/124258183/de0a4815-77e2-41b7-b66d-7350bd94d8bf">
