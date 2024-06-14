@@ -1,13 +1,13 @@
 <?php
-$host = 'localhost';
+$host = 'db';
 $dbname = 'bookhub';
-$user = 'root';
-$pass = '';
+$user = 'user';
+$pass = 'user_password';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo "Lo sentimos, no se pudo conectar a la base de datos en este momento. Por favor, inténtelo de nuevo más tarde.";
+    die("Could not connect to the database: " . $e->getMessage());
 }
 ?>
