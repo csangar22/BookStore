@@ -21,10 +21,10 @@ RUN apt-get update && apt-get install -y \
 
 # Copia la configuración personalizada de Apache
 # Este Copy es para el flujo de control de versiones.
-# COPY bookHub/apache-config.conf /etc/apache2/sites-available/000-default.conf
+COPY bookHub/apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Este COPY debe deascomentarse cuando se ejecute el contenedor de docker, por posibles problemas es mejor antes de ejecutar estar en la carpeta de bookHub.
-COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
+# COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Expone el puerto 80
 EXPOSE 80
