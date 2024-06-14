@@ -96,32 +96,32 @@ CREATE INDEX idx_detalle_carrito_isbn ON detalle_carrito(ISBN);
 
 
 INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Estrellas` ,`Precio`,`Image`, `Description`, `Editorial`, `Idioma`, `Encuadernado`, `Fecha_lanzamiento`, `Stock`)
-VALUES('9780063058501', 'Heartless Hunter', 'Kristen Ciccarelli', 4.5 ,18.90, 'img/heartless-hunter-kristen-ciccarelli.jpg', 'In a land ruled by ancient gods and 
+VALUES('9780063058501', 'Heartless Hunter', 'Kristen Ciccarelli', 4 ,18.90, 'img/heartless-hunter-kristen-ciccarelli.jpg', 'In a land ruled by ancient gods and 
 treacherous politics, Asha is a fierce hunter dedicated to protecting her people from the monstrous
 beasts that lurk in the dark. When a new threat arises, Asha must join forces
 with a mysterious stranger who challenges everything she believes. Together,
 they embark on a perilous journey to uncover secrets that could change their world forever.', 'HarperTeen', 'English', 'Hardcover', '2023-06-15', '6');
 
 INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Estrellas`, `Precio`, `Image`, `Description`, `Editorial`, `Idioma`, `Encuadernado`, `Fecha_lanzamiento`, `Stock`)
-VALUES ('9781635574091', 'HOUSE OF FLAME AND SHADOW', 'Sarah J. Maas', 4.8, 21.37, 'img/house-of-flame-and-shadow-sarah-j-maas.jpg',
+VALUES ('9781635574091', 'HOUSE OF FLAME AND SHADOW', 'Sarah J. Maas', 5, 21.37, 'img/house-of-flame-and-shadow-sarah-j-maas.jpg',
 'IThe latest installment in the Crescent City series, \"House of Flame and Shadow\" follows Bryce Quinlan as she navigates a world of magic, danger, and intrigue.
 As ancient powers awaken and new threats emerge, Bryce and her allies must confront their deepest fears and uncover long-buried secrets to
 protect their city and those they love.', 'Bloomsbury Publishing', 'English', 'Hardcover', '2023-11-14', '6');
  
 INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Estrellas`, `Precio`, `Image`, `Description`, `Editorial`, `Idioma`, `Encuadernado`, `Fecha_lanzamiento`, `Stock`)
-VALUES ('9781982181183', 'Miss Morgans Book Brigade', 'Janet Skeslien Charles', 4.5, 22.70, 'img/miss-morgans-book-brigade-janet-skeslien-charles.jpg',
+VALUES ('9781982181183', 'Miss Morgans Book Brigade', 'Janet Skeslien Charles', 3, 22.70, 'img/miss-morgans-book-brigade-janet-skeslien-charles.jpg',
 'Set against the backdrop of World War II, \"Miss Morgans Book Brigade\" tells the story of an unlikely group of women who come together to form a mobile library,
 bringing books and hope to those in need. As they navigate the challenges of war and personal loss, these women find strength, friendship, and a sense of 
 purpose in the power of literature.', 'Atria Books', 'English', 'Paperback', '2023-09-10', '6');
 INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Estrellas`, `Precio`, `Image`, `Description`, `Editorial`, `Idioma`, `Encuadernado`, `Fecha_lanzamiento`, `Stock`)
-VALUES ('9780593239473', 'THE DEMON OF UNREST', 'Erik Larson', '4.6', '20.65',
+VALUES ('9780593239473', 'THE DEMON OF UNREST', 'Erik Larson', '4', '20.65',
 'img/the-demon-of-unrest-erik-larson.jpg', 'Erik Larsons \"The Demon of Unrest\" delves into the dark sides of human nature and the chaos that can arise when societal
 order breaks down. Through meticulously researched historical events and compelling narratives,
 Larson explores how fear, paranoia, and violence can spread like wildfire, transforming ordinary people into agents of chaos.', 
 'Crown Publishing Group', 'English', 'Hardcover', '2023-05-05', '6');
 
 INSERT INTO `libro` (`ISBN`, `Titulo`, `Autor`, `Estrellas`, `Precio`, `Image`, `Description`, `Editorial`, `Idioma`, `Encuadernado`, `Fecha_lanzamiento`, `Stock`)
-VALUES ('9780593336829', 'Bride', 'Ali Hazelwood', 4.4, 14.00, 'img/bride-ali-hazelwood.jpg',
+VALUES ('9780593336829', 'Bride', 'Ali Hazelwood', 3, 14.00, 'img/bride-ali-hazelwood.jpg',
 'In \"Bride\", Ali Hazelwood crafts a witty and heartwarming romance filled with unexpected twists and delightful characters. 
 When a fiercely independent scientist agrees to an arranged marriage to secure funding for her research, she never expects to find herself falling
 for her charming but enigmatic fiancé. As they navigate the complexities of love and ambition, they discover that true partnership means embracing 
