@@ -21,8 +21,10 @@ RUN apt-get update && apt-get install -y \
 
 # Copia la configuración personalizada de Apache
 
-#COPY bookHub/apache-config.conf /etc/apache2/sites-available/000-default.conf
-COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
+#Este COPY debe deascomentarse cuando se ejecute el contenedor de docker.
+COPY bookHub/apache-config.conf /etc/apache2/sites-available/000-default.conf
+# Para probar con XAMPP
+# COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
 # Expone el puerto 80
 EXPOSE 80
 
