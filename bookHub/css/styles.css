@@ -1,0 +1,415 @@
+body {
+    background-color: #f0f0f0;
+}
+
+/*Estilos de navbar*/
+.navbar-custom {
+    background-color: #EDE8E8;
+}
+.navbar-brand {
+    font-size: 1.5rem;
+}
+.navbar-nav .nav-link {
+    color: #6c757d;
+    font-weight: bold;
+}
+.navbar-nav .nav-link:hover {
+    color: #000;
+}
+.form-inline .btn-search {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+.btn-register {
+    background-color: #A500B3;
+    color: white;
+    border-radius: 0.25rem;
+    border-radius: 13px;
+}
+
+.btn-login {
+    background-color: #F8CCFF;
+    color: black;
+    border-radius: 0.25rem;
+    border-radius: 13px;
+}
+.btn-login:hover{
+    background-color: #BC07CB;
+}
+.navbar-nav .nav-item .nav-link {
+    padding-right: 1rem;
+}
+.fa-shopping-bag {
+    color: #000;
+    font-size: 1.25rem;
+}
+
+.navbar-brand{
+    font-family: 'Exo 2', sans-serif;
+}
+
+.nav-link{
+    font-family: 'Comic Neue', sans-serif;
+    font-size: 20px;
+}
+#search-input{
+    border-radius: 15px;
+
+}
+/*Estilos de la imagen, su opacidad y tamano. También estilos de el titulo y subtitulo*/
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    background: url('../img/img_inicio.jpg') no-repeat center center/cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(168, 0, 248, 0.4); /* 50% opacidad al color Morado */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.overlay h1 {
+    font-size: 45px;
+    margin: 0;
+    font-family:'Glegoo',serif;
+}
+
+.overlay h1 span {
+    font-weight: 900;
+    font-family: 'Goblin One',serif;
+}
+
+.overlay p {
+    font-size: 24px;
+    margin-top: 10px;
+    font-family: 'Goblin One',serif;
+    font-style: normal;
+}
+
+
+/*Estilos del carrusel*/
+#carouselExampleSlidesOnly {
+    display: flex;
+    justify-content: center;
+}
+.carousel-item img {
+    width: 40%;
+    margin: auto;
+    height: 60%;
+}
+
+/*Estilos de el contenedor de libros-Inicio*/
+.book-container {
+    display: flex;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 50%;
+
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    margin-bottom: 20px;
+}
+
+.book img {
+    max-width: 130%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.book h3 {
+    font-size: 13px;
+    margin: 10px 0 5px;
+    font-family: 'Graduate', serif;
+}
+
+.book p {
+    font-size: 12px;
+    color: gray;
+    margin: 0 0 10px;
+    font-family: 'Gowun Dodum', serif;
+}
+.book .price {
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+}
+.book .btn {
+    background-color: #BC07CB;
+    color: white;
+    border-radius: 8px;
+    width: 2cm;
+    font-size: 12px;
+}
+.book .btn:hover{
+    background-color: #dc70ed;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+}
+
+.stars span {
+    font-size: 20px;
+    color: gold;
+}
+
+.stars span:nth-child(4)::after {
+    content: '\00BD';
+    color: gold;
+    margin-left: -5px;
+}
+
+/*Estilos del footer*/
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    font-family: 'Adamina', serif;
+    font-size: 14px;
+}
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+.footer .social-icons img{
+    width: 30px;
+    margin-right: 10px;
+}
+
+h5{
+    font-size: 15px;
+}
+#p{
+    margin-top: 2px;
+}
+/*Row up, estilos*/
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #8b0c8b;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+/*CATEGORIAS LIBROS*/
+#cat_id{
+    font-family: 'Gilda display', serif;
+}
+#cat_id h3{
+    font-weight: 800;
+}
+
+/*Estilos de el formulario de registro*/
+.signup-container {
+    background-color: #F8CCFF;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.signup-container h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+.signup-container p {
+    margin-bottom: 20px;
+    color: #555;
+}
+.signup-container .form-control {
+    margin-bottom: 10px;
+    height: 45px;
+    border-radius: 10px;
+}
+.signup-container .btn-primary {
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 45px;
+}
+.signup-container .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+.signup-container .divider::before,
+.signup-container .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+.signup-container .divider::before {
+    margin-right: .25em;
+}
+.signup-container .divider::after {
+    margin-left: .25em;
+}
+.signup-container .google-btn {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 340px;
+    box-shadow: #777;
+}
+.signup-container .google-btn img {
+    height: 20px;
+    margin-right: 10px;
+}
+.signup-container .terms {
+    font-size: 0.8em;
+    color: #777;
+}
+.signup-container .terms a {
+    color: #555;
+    text-decoration: none;
+}
+
+/* Contenedor book details*/
+.book-containers {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 20px 0;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.book-image {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: 'Graguate', serif;
+}
+
+.book-author {
+    color: #555;
+    margin-top: 5px;
+    font-family: 'Gowun Dodum', serif;
+}
+.book-rating {
+    color: gold;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+.book-description {
+    margin-top: 10px;
+    font-family: 'Actor', sans-serif;
+}
+.book-description p {
+    margin: 0;
+}
+.book-price {
+    font-size: 1.2rem;
+    color: #d9534f;
+    margin-top: 20%;
+    text-align: center;
+    width: 70%;
+    font-family: 'Inter', sans-serif;
+}
+.book-iva {
+    font-size: 1.1rem;
+    color: #797575;
+    margin-top: 10px;
+    text-align: center;
+    width: 70%;
+    font-family: 'Inter', sans-serif;
+}
+.book-details {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.btn-add-cart {
+    background-color: #91009D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: block;
+    width: 70%;
+}
+.btn-add-cart:hover {
+    background-color: #7f6fdc;
+
+
+}
+.btn-review {
+    background-color: #91009D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: block;
+    width: 25%;
+    text-align: center;
+}
+.btn-review:hover{
+    background-color: #BC07CB;
+
+}
+.text-muted {
+    color: #6c757d;
+}
+
+/*Modal*/
+.modal-content{
+    background-color:#f8cff6 ;
+}
+
+
