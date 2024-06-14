@@ -24,7 +24,8 @@ This is a PHP and SQL-based bookstore application using Docker and Git version c
 <img width="960" alt="image" src="https://github.com/csangar22/BookStore/assets/124258183/290d31d2-a186-4e0c-a8ff-360dec642f39">
 
 ### Order Page ###
-<img width="960" alt="image" src="https://github.com/csangar22/BookStore/assets/124258183/22e0779b-9b5b-40cd-ac90-d7f6507bea31">
+![image](https://github.com/csangar22/BookStore/assets/124258183/c4ea86fa-b56b-433d-a54e-b09d8e86c1e0)
+
 
 
 # Aplicación BookStore
